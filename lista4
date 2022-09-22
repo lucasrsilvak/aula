@@ -50,7 +50,7 @@ float raiz(float x, float y) {
 	// numero do qual quero descobrir la raizita
 	// z = chute
 	float z = y*y;
-	if(z >= x*0.001 && z <= x*0.001) return y;
+	if(z >= x*0.999 && z <= x*1.001) return y;
 	if(z > x) return raiz(x, y*0.5);
 	else 	  return raiz(x, y*1.5);
 }
@@ -72,5 +72,5 @@ int main()
 {
 	crescente(5, 0);
 	printf("resto: %d\n", res(-699, 400));
-	printf("raiz %.2f", raiz(4,2));
+	printf("raiz %.3f", raiz(2,1.5));
 }
