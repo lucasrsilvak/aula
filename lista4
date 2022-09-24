@@ -14,8 +14,9 @@ int mdc3(int a, int b, int c)  {
 	
 }
 
-int fib(int a) {
-	
+int fib(int x) {
+	if (x < 2) return 1;
+	return (fib(x-1) + fib(x-2));
 }
 
 int primo(int x, int y)  {
@@ -34,8 +35,8 @@ int decrescente(int x) {
 // g)
 
 int res(int x, int y) {
-	int z = x/y;
-	return (x - z*y);
+	if (y > x) return x;
+	return (res(x-y, y));
 }
 
 // h)
@@ -61,6 +62,22 @@ int dig(int x, int y) {
 	
 }
 
+// n)
+
+int expo2(int x, int y, int z) {
+	if (y == 0) return 1;
+	else if (y > 0) {
+		z = z*x;
+		y = y-1;
+		return expo2(x, y, z);
+	}
+	return z;
+}
+
+int expo(int x, int y) {
+	return expo2(x, y, x);
+}
+
 // o)
 int crescente(int x, int y) {
 	printf("%d ",y);
@@ -71,6 +88,8 @@ int crescente(int x, int y) {
 int main()
 {
 	crescente(5, 0);
-	printf("resto: %d\n", res(-699, 400));
-	printf("raiz %.3f", raiz(2,1.5));
+	printf("resto: %d\n", res(699, 300));
+	printf("raiz %.3f\n", raiz(2,1.5));
+	printf("fib %d\n", fib(13));
+	printf("exp: %d", expo(3,3));
 }
