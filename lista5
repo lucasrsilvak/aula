@@ -28,12 +28,11 @@ int primo(int x) {
 // n)
 
 int expo(int x, int y) {
-	int v = x;
 	if (y == 0) return 1;
 	for (int i = 1; i < y; i++) {
-		v *= v;
+		x *= x;
 	}
-	return v;
+	return x;
 }
 
 int main() {
