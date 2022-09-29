@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+// a)
+
+int fat(int x) {
+	int v = 1;
+	for (int i = 1; i <= x; i++) {
+		v *= i;
+	}
+	return v;
+}
+
+// b)
+
+
+
+// e)
+
+int primo(int x) {
+	int i = 2;
+	while (i < (x-1)) {
+		i++;
+		if((x%i) == 0) return 1;
+	}
+	return 0;
+}
+
+// n)
+
+int expo(int x, int y) {
+	int v = x;
+	if (y == 0) return 1;
+	for (int i = 1; i < y; i++) {
+		v *= v;
+	}
+	return v;
+}
+
+int main() {
+	printf("primo: %d\n", expo(5, 3));
+	return 0;
+}
