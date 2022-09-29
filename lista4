@@ -1,23 +1,35 @@
 #include <stdio.h>
 #include <math.h>
 
+// a)
+
 int fatorial(int n) {
 	if (n == 0) return (1);
 	return (n*fatorial(n+1));
 }
 
+// b)
+
 int mdc(int a, int b) {
-	
+	if (a%b == 0) return (b);
+	if (b > a)    return mdc(b, a);
+	return mdc(a-(a%b), a%b);
 }
 
+// c)
+
 int mdc3(int a, int b, int c)  {
-	
+	return mdc(a, mdc(b, c));
 }
+
+// d)
 
 int fib(int x) {
 	if (x < 2) return 1;
 	return (fib(x-1) + fib(x-2));
 }
+
+// e)
 
 int primo(int x, int y)  {
 	if (x%y==0 && y>1) return (0);
@@ -41,8 +53,20 @@ int res(int x, int y) {
 
 // h)
 
+int form2(int x, int y, int z) {
+	if (y == x) return z;
+	return form2(x, y+1, z+y);
+}
+
 int form(int x) {
-	
+	return form2(x*x+1, 0, 0);
+}
+
+// i)
+
+int mmc(int x, int y) {
+	if (x < y) return mmc(y, x);
+	return (x*y/mdc(x, y));
 }
 
 // l)
@@ -58,8 +82,18 @@ float raiz(float x, float y) {
 
 // m)
 
-int dig(int x, int y) {
+int dig2(int x, int y, int z) {
+	int w = x%y;
+	int v = 0;
 	
+	if (y/10 != 0) v = (w/(y/10));
+	if (y > x) return z+v;
+	
+	return dig2(x-w, y*10, z+v);
+}
+
+int dig(int x) {
+	return dig2(x, 1, 0);
 }
 
 // n)
@@ -79,6 +113,7 @@ int expo(int x, int y) {
 }
 
 // o)
+
 int crescente(int x, int y) {
 	printf("%d ",y);
 	if (x > y) 	   return crescente(x, y+1);
@@ -88,8 +123,13 @@ int crescente(int x, int y) {
 int main()
 {
 	crescente(5, 0);
+	printf("mdc: %d\n", mdc(8, 4));
+	printf("mdc3: %d\n", mdc3(10, 500, 25));
+	printf("mmc: %d\n", mmc(5, 2));
 	printf("resto: %d\n", res(699, 300));
+	printf("dig: %d\n", dig(9999999));
 	printf("raiz %.3f\n", raiz(2,1.5));
+	printf("form: %d\n", form(2));
 	printf("fib %d\n", fib(13));
 	printf("exp: %d", expo(3,3));
 }
